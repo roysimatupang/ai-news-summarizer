@@ -4,3 +4,5 @@ crewai
 langchain-groq
 python-dotenv
 requests
+chromadb>=0.3.25  # Add this if not already included
+duckdb  # Use DuckDB as a Chroma backend instead of SQLite
