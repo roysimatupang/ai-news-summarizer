@@ -7,15 +7,6 @@ import os
 import requests
 import streamlit as st
 from dotenv import load_dotenv
-import chromadb
-
-# Initialize Chroma with DuckDB backend
-client = chromadb.Client(
-    settings=chromadb.Settings(
-        persist_directory="chroma_data",  # Optional, directory to save persistent data
-        chroma_db_impl="duckdb",         # Use DuckDB as the backend
-    )
-)
 
 
 # Loads variables from the .env file
@@ -37,8 +28,8 @@ class NewsCrawlerAgent(Agent):
 
     def execute(self, query):
         """Fetch news from NewsAPI"""
-        api_key = "eb7606b35e384f1ea2d83225d7a69688"
-        url = f"https://newsapi.org/v2/everything?q={query}&apiKey={api_key}"
+        new_api_key = os.getenv('NEWS_API_KEY')
+        url = f"https://newsapi.org/v2/everything?q={query}&apiKey={new_api_key}"
         response = requests.get(url)
         if response.status_code == 200:
             return response.json()["articles"]
