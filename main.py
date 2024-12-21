@@ -9,6 +9,14 @@ import streamlit as st
 from dotenv import load_dotenv
 import chromadb
 
+# Initialize Chroma with DuckDB backend
+client = chromadb.Client(
+    settings=chromadb.Settings(
+        persist_directory="chroma_data",  # Optional, directory to save persistent data
+        chroma_db_impl="duckdb",         # Use DuckDB as the backend
+    )
+)
+
 
 # Loads variables from the .env file
 load_dotenv()
