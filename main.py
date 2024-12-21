@@ -1,4 +1,3 @@
-
 from langchain.agents import initialize_agent, Tool
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
@@ -8,7 +7,14 @@ import os
 import requests
 import streamlit as st
 from dotenv import load_dotenv
+import chromadb
 
+client = chromadb.Client(
+    settings=chromadb.Settings(
+        persist_directory="chroma_data",  # Optional directory for persistence
+        chroma_db_impl="duckdb",         # Use DuckDB backend
+    )
+)
 # Loads variables from the .env file
 load_dotenv()
 
