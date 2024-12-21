@@ -6,4 +6,4 @@ python-dotenv
 requests
 #chromadb>=0.3.25  # Add this if not already included
 #duckdb  # Use DuckDB as a Chroma backend instead of SQLite
-sqlite3>=3.45.3
+#sqlite3>=3.45.3
